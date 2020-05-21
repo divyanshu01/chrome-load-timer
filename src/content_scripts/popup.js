@@ -2,7 +2,7 @@ var total,
   acc = 0;
 
 function set(id, start, length, noacc) {
-  var x = Math.round(start / total * 300);
+  let x = Math.round(start / total * 300);
 
   if (!noacc) {
     acc += length;
@@ -19,9 +19,9 @@ function setCount(id, count) {
   document.getElementById(id + 'Count').innerText = count || '-';
 }
 
-chrome.tabs.getSelected(null, function (tab) {
-  chrome.storage.local.get('cache', function(data) {
-    var t = data.cache['tab' + tab.id];
+chrome.tabs.getSelected(null, (tab) => {
+  chrome.storage.local.get('cache', (data) => {
+    let t = data.cache['tab' + tab.id];
     total = t.totalTime;
 
     setCount('redirect', t.redirectCount);

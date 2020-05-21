@@ -78,7 +78,7 @@
       timing.redirectStart === 0 ? timing.fetchStart:timing.redirectStart);
     l.domComplete = timing.domComplete - timing.domLoading;
 
-    for (var k in l) {
+    for (let k in l) {
       l[k] = Math.round(l[k]);
     }
 
@@ -90,8 +90,8 @@
       const l = LoadPerformance();
       if (l.totalTime > 0) {
         // we have only 4 chars in our disposal including decimal point
-        var t = String((l.totalTime / 1000).toPrecision(3)).substring(0, 4);
-        var roe = chrome.runtime && chrome.runtime.sendMessage ?
+        let t = String((l.totalTime / 1000).toPrecision(3)).substring(0, 4);
+        let roe = chrome.runtime && chrome.runtime.sendMessage ?
           'runtime':'extension';
 
         chrome[roe].sendMessage({time: t, timing: l});
